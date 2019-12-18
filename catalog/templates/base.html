@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{%  load static %}
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Локальная библиотека МБУК ЦБС им. А. Белого</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="{% static "css/bootstrap.css" %}" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link rel="stylesheet" href={% static "css/bootstrap.min.css" %}>
+  <!-- Material Design Bootstrap -->
+  <link rel="stylesheet" href={% static "css/mdb.min.css" %}>
+  <!-- Your custom styles (optional) -->
+</head>
+
+<body>
+
+  <!--Main Navigation-->
+  <header>
+
+    <!-- Navbar -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+      <div class="container">
+
+        <!-- Brand -->
+        <a class="navbar-brand waves-effect" href="/">
+          <strong class="blue-text">МБУК ЦБС им. А. Белого</strong>
+        </a>
+
+        <!-- Collapse -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Links -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+          <!-- Left -->
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link waves-effect" href="#">Главная
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">Авторы</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/"
+                target="_blank">Жанры</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link waves-effect" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">Книги</a>
+            </li>
+          </ul>
+
+          <!-- Right -->
+          <ul class="navbar-nav nav-flex-icons">
+            <li class="nav-item">
+              <a href="http://biblioteka-belogo.ru/" class="nav-link waves-effect" target="_blank">
+                <i class="fas fa-book-open"></i>  Публичная бибилиотека</i>
+              </a>
+            </li>
+          </ul>
+
+        </div>
+
+      </div>
+    </nav>
+    <!-- Navbar -->
+
+  </header>
+  <!--Main Navigation-->
+
+  <!--Main layout-->
+  <main class="mt-5 pt-5">
+
+    <div class="container-fluid">
+
+      <!--Section: Jumbotron-->
+      <section class="card blue-gradient wow fadeIn">
+
+        <!-- Content -->
+        <div class="card-body text-white text-center py-5 px-5 my-5">
+
+          <h1 class="mb-4">
+            <strong>ЛОКАЛЬНАЯ БИБЛИОТЕКА</strong>
+          </h1>
+          <h3>
+            <strong>Центральная Библиотечная Система им. А. Белого</strong>
+          </h3>
+            <hr>
+          <p class="mb-3">
+            <strong>
+                В нашей локальной библиотеке вам доступны к прочтению материалы и книги на которые распространяются авторские права.
+            <p>Все материалы доступны к прочтению только при подключении к внутренней сети библиотеки.</p>
+            </strong>
+          </p>
+
+        </div>
+        <!-- Content -->
+      </section>
+      <!--Section: Jumbotron-->
+
+        {% block content %}
+
+        {% endblock %}
+
+    </div>
+  </main>
+  <!--Main layout-->
+
+  <!--Footer-->
+  <footer class="page-footer text-center font-small mdb-color darken-2 mt-4 wow fadeIn">
+      <hr class="my-4">
+    <!--Call to action-->
+    <div class="pt-4">
+        <h2>Локальная библиотека ЦБС им. А. Белого</h2>
+    </div>
+    <!--/.Call to action-->
+
+    <hr class="my-4">
+
+    <!-- Social icons -->
+
+    <!-- Social icons -->
+
+    <!--Copyright-->
+    <div class="footer-copyright py-3">
+      © 2019 Copyright:
+      <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> MDBootstrap.com </a>
+    </div>
+    <!--/.Copyright-->
+
+  </footer>
+  <!--/.Footer-->
+
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="{% static "js/jquery-3.4.1.min.js" %}"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="{% static "js/popper.min.js" %}"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="{% static "js/mdb.min.js" %}"></script>
+  <!-- Initializations -->
+  <script type="text/javascript">
+    // Animations initialization
+    new WOW().init();
+
+  </script>
+</body>
+
+</html>
