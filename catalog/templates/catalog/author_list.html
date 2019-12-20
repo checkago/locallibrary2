@@ -1,0 +1,26 @@
+{% extends "base_all.html" %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header sunny-morning-gradient">
+                <h1>Список авторов</h1>
+            </div>
+            <div class="card-body">
+                {% if author_list %}
+                <ul>
+
+                  {% for author in author_list %}
+                  <li>
+                    <a href="{{ author.get_absolute_url }}">{{ author.last_name }} {{ author.first_name }}</a>
+                  </li>
+                  {% endfor %}
+
+                </ul>
+                {% else %}
+                  <p>There are no books in the library.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

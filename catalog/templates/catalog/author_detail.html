@@ -1,0 +1,17 @@
+{% extends "base_all.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="card mt-5">
+        <div class="card-header sunny-morning-gradient">
+            <h1>{{ author.first_name }} {{ author.last_name }}</h1>
+        </div>
+        <div class="card-body">
+            <p><strong>Описание:</strong> {{ author.summary }}</p>
+        </div>
+        <div class="card-footer default-color">
+            <p><strong>Годы жизни:</strong> {{ author.date_of_birth }} - {{ author.date_of_death }}</p>
+        </div>
+</div>
+
+{% endblock %}

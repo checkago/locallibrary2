@@ -1,19 +1,26 @@
-{% extends "base.html" %}
+{% extends "base_all.html" %}
 
 {% block content %}
-    <h1>Book List</h1>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header sunny-morning-gradient">
+                <h1>Список книг</h1>
+            </div>
+            <div class="card-body"></div>
+                {% if book_list %}
+                <ul>
 
-    {% if book_list %}
-    <ul>
+                  {% for book in book_list %}
+                  <li>
+                    <a href="{{ book.get_absolute_url }}">{{ book.title }}</a> ({{book.author}})
+                  </li>
+                  {% endfor %}
 
-      {% for book in book_list %}
-      <li>
-        <a href="{{ book.get_absolute_url }}">{{ book.title }}</a> ({{book.author}})
-      </li>
-      {% endfor %}
-
-    </ul>
-    {% else %}
-      <p>There are no books in the library.</p>
-    {% endif %}       
+                </ul>
+                {% else %}
+                  <p>Книг в бибилиотеке нет.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 {% endblock %}

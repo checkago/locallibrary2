@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Book, Author, Genre
+from .models import Book, Author, Chapter
 from django.views import generic
 
 
@@ -20,9 +20,9 @@ def index(request):
         context={'num_books': num_books, 'num_authors': num_authors},
     )
 
+
 class BookListView(generic.ListView):
     model = Book
-
 
 
 class BookDetailView(generic.DetailView):
@@ -31,13 +31,51 @@ class BookDetailView(generic.DetailView):
     def book_detail_view(request, pk):
         try:
             book_id = Book.objects.get(pk=pk)
+            chapters = Chapter.objects.set(pk=pk)
+
         except Book.DoesNotExist:
             raise Http404("Книги в каталоге нет")
-
-        # book_id=get_object_or_404(Book, pk=pk)
 
         return render(
             request,
             'catalog/book_detail.html',
-            context={'book': book_id, }
+            context={'book': book_id, 'chapters': chapters, 'text': text}
         )
+
+
+class AuthorListView(generic.ListView):
+    model = Author
+
+
+class AuthorDetailView(generic.DetailView):
+    model = Author
+
+    def author_detail_view(request, pk):
+        try:
+            author_id = Author.objects.get(pk=pk)
+        except Author.DoesNotExist:
+            raise Http404("Книги в каталоге нет")
+
+        # author_id=get_object_or_404(Author, pk=pk)
+
+        return render(
+            request,
+            'catalog/author_detail.html',
+            context={'author': author_id, }
+        )
+
+
+class ChapterListView(generic.ListView):
+    model = Chapter
+
+
+class ChapterDetailView(generic.DetailView):
+    model = Chapter
+
+    def chapter_detail_view(request, pk):
+        try:
+            chapter_id = Chapter.objects.get(pk=pk)
+        except Chapter.DoesNotExist:
+            raise Http404("Главы в книге")
+
+        # book_id=get_object_or_404(Book, pk=pk

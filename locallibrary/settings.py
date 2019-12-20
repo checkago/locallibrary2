@@ -25,11 +25,12 @@ SECRET_KEY = 'bbn0!m$l$1p=hpw__d!uk1yhi6h=(6+52&m5e0*lm5prh!mg9@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.2.107', 'localhost']
+ALLOWED_HOSTS = ['192.168.2.15', '213.141.153.187', 'localhost']
 
 
 
 INSTALLED_APPS = [
+    'ckeditor',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -48,6 +49,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CKEDITOR_BASEPATH = "/my_static/ckeditor/ckeditor/"
 
 ROOT_URLCONF = 'locallibrary.urls'
 
