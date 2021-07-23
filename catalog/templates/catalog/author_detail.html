@@ -1,4 +1,4 @@
-{% extends "base_all.html" %}
+{% extends "base_detail.html" %}
 
 {% block content %}
 <div class="container">
@@ -11,6 +11,7 @@
         </div>
         <div class="card-footer default-color">
             <p><strong>Годы жизни:</strong> {{ author.date_of_birth }} - {{ author.date_of_death }}</p>
+            <p>Количество книг: {{ author.get_books }}</p>
         </div>
 </div>
 

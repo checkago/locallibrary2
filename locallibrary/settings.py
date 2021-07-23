@@ -25,7 +25,7 @@ SECRET_KEY = 'bbn0!m$l$1p=hpw__d!uk1yhi6h=(6+52&m5e0*lm5prh!mg9@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.2.15', '213.141.153.187', 'localhost']
+ALLOWED_HOSTS = ['192.168.88.185', '213.141.153.187', 'localhost']
 
 
 
@@ -50,7 +50,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CKEDITOR_BASEPATH = "/my_static/ckeditor/ckeditor/"
 
 ROOT_URLCONF = 'locallibrary.urls'
 
@@ -120,5 +119,15 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
+
+STATICFILES_ROOT = [
+    os.path.join(BASE_DIR, "static"),
+    ]
+
+CKEDITOR_CONFIGS = {
+    'awesome_ckeditor': {
+        'toolbar': 'Full',
+    },
+}

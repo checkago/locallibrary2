@@ -1,18 +1,21 @@
 from django.forms import ModelForm
+from django import forms
 from django.contrib import admin
 from .models import Author, Genre, Book, Chapter
-from suit_ckeditor.widgets import CKEditorWidget
+from ckeditor.widgets import CKEditorWidget
 
 
-class ChapterForm(ModelForm):
+class ChapterAdminForm(forms.ModelForm):
+    text = forms.CharField(widget=CKEditorWidget(config_name='awesome_ckeditor'))
+
     class Meta:
-        widgets = {
-            'text': CKEditorWidget(editor_options={'startupFocus': True})
-        }
+        model = Chapter
+        fields = '__all__'
 
 
 class AuthorAdmin(admin.ModelAdmin):
     list_display = ('last_name', 'first_name', 'date_of_birth', 'date_of_death')
+    fields = [('first_name', 'last_name'), ('date_of_birth', 'date_of_death')]
 
 
 class BookAdmin(admin.ModelAdmin):
@@ -22,10 +25,7 @@ class BookAdmin(admin.ModelAdmin):
 class ChapterAdmin(admin.ModelAdmin):
     list_display = ('book', 'name')
     list_filter = ('book',)
-    form = ChapterForm
-    fieldsets = [
-        ('Содержимое', {'classes': ('full-width',), 'fields': ('name', 'book', 'text',)})
-    ]
+    form = ChapterAdminForm
 
 
 class GenreAdmin(admin.ModelAdmin):

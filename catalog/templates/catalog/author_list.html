@@ -8,11 +8,11 @@
             </div>
             <div class="card-body">
                 {% if author_list %}
-                <ul>
+                <ul class="list-group">
 
                   {% for author in author_list %}
-                  <li>
-                    <a href="{{ author.get_absolute_url }}">{{ author.last_name }} {{ author.first_name }}</a>
+                  <li class="list-group-item">
+                    <a href="{{ author.get_absolute_url }}">{{ author.last_name }}, {{ author.first_name }}</a>
                   </li>
                   {% endfor %}
 

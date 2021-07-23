@@ -1,0 +1,49 @@
+{% extends "base_all.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="card mt-5">
+        <div class="card-header sunny-morning-gradient">
+            <h2>Название: <strong>{{ book.title }}</strong></h2>
+        </div>
+        <div class="card-body">
+            <p><strong>Автор:</strong> <a href="">{{ book.author }}</a></p> <!-- author detail link not yet defined -->
+            <p><strong>Описание:</strong> {{ book.summary }}</p>
+            <p><strong>Жанр:</strong> {% for genre in book.genre.all %} {{ genre }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 mt-5 mb-4">
+            <div class="card mb-4 wow fadeIn">
+                <div class="card-header text-center info-color">
+                    <h4>Оглавление</h4>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        {% for chapter in book.get_chapters %}
+                            <li>{{ chapter }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9 mt-5 mb-4">
+            <div class="card mb-4 wow fadeIn">
+                <div class="card-header text-center info-color">
+                    <h4>Содержание</h4>
+                </div>
+                <div class="card-body">
+                    <!-- Summary -->
+                    {% for chapter in book.get_chapters %}
+                            {{ chapter.text | safe}}
+                        {% endfor %}
+                </div>
+                <div class="card-footer">
+                    <!-- Pagination -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
