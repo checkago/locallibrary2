@@ -25,7 +25,7 @@ SECRET_KEY = 'bbn0!m$l$1p=hpw__d!uk1yhi6h=(6+52&m5e0*lm5prh!mg9@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.88.185', '213.141.153.187', 'localhost']
+ALLOWED_HOSTS = ['192.168.88.185', '213.141.153.187', '127.0.0.1']
 
 
 
@@ -122,8 +122,12 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+
 STATICFILES_ROOT = [
-    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, 'static'),
     ]
 
 CKEDITOR_CONFIGS = {
@@ -131,3 +135,7 @@ CKEDITOR_CONFIGS = {
         'toolbar': 'Full',
     },
 }
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

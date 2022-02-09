@@ -28,10 +28,10 @@
               <!--Card content-->
               <div class="card-body {{ Genre.color }}">
                 <!--Title-->
-                <h4 class="card-title">{{ Genre.name }}</h4>
+                  <a class="text-white" href="{{ Genre.get_absolute_url }}"><h4 class="card-title">{{ Genre.name }}</h4></a>
                 <!--Text-->
                 <p class="card-text text-white">{{ Genre.description }}</p>
-                  <p>Количество книг: {{ Genre.get_books }}</p>
+                  <p>Количество книг: {{ Genre.get_books_count }}</p>
               </div>
 
             </div>

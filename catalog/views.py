@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Book, Author, Chapter, Genre
+from .models import Book, Author, Genre
 from django.views import generic
 
 
@@ -64,21 +64,16 @@ class AuthorDetailView(generic.DetailView):
         )
 
 
-class ChapterListView(generic.ListView):
-    model = Chapter
+class GenreDetailView(generic.DetailView):
+    model = Genre
 
-
-class ChapterDetailView(generic.DetailView):
-    model = Chapter
-
-    def chapter_detail_view(request, pk):
+    def genre_detail(request, pk):
         try:
-            chapter_id = Chapter.objects.get(pk=pk)
-        except Chapter.DoesNotExist:
-            raise Http404("Главы в книге")
+            genre_id = Genre.objects.get(pk=pk)
+        except Genre.DoesNotExist:
+            raise Http404("Такого жанра нет")
 
-        return render(
-            request,
-            'catalog/chapter_detail.html',
-            context={'book': book_id, 'chapter': chapter_id, 'page': page}
-        )
+        return render(request,
+                      'catalog/genre_detail.html',
+                      context={'genre':genre_id, }
+                      )

@@ -1,0 +1,30 @@
+{% extends "base_detail.html" %}
+{% load text_spliter %}
+
+{% block content %}
+<div class="container">
+    <div class="card mt-5">
+        <div class="card-header sunny-morning-gradient">
+            <h2>Название жанра: <strong>{{ genre.name }}</strong></h2>
+        </div>
+        <div class="card-body">
+            <p><strong>Описание:</strong> {{ genre.description }}</p>
+        </div>
+    </div>
+        <div class="mt-5 mb-4">
+            <div class="card mb-4 wow fadeIn">
+                <div class="card-header text-center">
+                    <h3>Список книг</h3>
+                </div>
+                <div class="card-body">
+                    {% for Book in genre.get_books %}
+                        <a href="{{ Book.get_absolute_url }}"><p>{{ Book.title }}</p></a>
+                    {% endfor %}
+                </div>
+                <div class="card-footer">
+                </div>
+        </div>
+
+</div>
+
+{% endblock %}

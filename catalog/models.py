@@ -11,8 +11,14 @@ class Genre(models.Model):
         verbose_name = 'Жанр'
         verbose_name_plural = 'Жанры'
 
-    def get_books(self):
+    def get_books_count(self):
         return self.books.filter(genre=self).count()
+
+    def get_books(self):
+        return self.books.filter(genre=self).all()
+
+    def get_absolute_url(self):
+        return reverse('genre_detail', args=[str(self.id)])
 
     def __str__(self):
         return self.name
@@ -23,13 +29,11 @@ class Book(models.Model):
     author = models.ForeignKey('Author', on_delete=models.CASCADE, related_name='authorb', null=True, verbose_name='Автор')
     summary = models.TextField(max_length=1000, verbose_name='Описание')
     genre = models.ManyToManyField(Genre, related_name='books', verbose_name='Жанр')
+    file = models.FileField(upload_to='book_files', blank=True, null=True, verbose_name='Файл книги')
 
     class Meta:
         verbose_name = 'Книга'
         verbose_name_plural = 'Книги'
-
-    def get_chapters(self):
-        return self.chapters.filter(book=self)
 
     def display_genre(self):
         return ', '.join([genre.name for genre in self.genre.all()[:3]])
@@ -57,21 +61,11 @@ class Author(models.Model):
     def get_absolute_url(self):
         return reverse('author-detail', args=[str(self.id)])
 
-    def get_books(self):
+    def get_books_count(self):
         return self.authorb.filter(author=self).count()
+
+    def get_books(self):
+        return self.authorb.filter(author=self).all()
 
     def __str__(self):
         return '%s, %s' % (self.last_name, self.first_name)
-
-
-class Chapter(models.Model):
-    name = models.CharField(max_length=200, verbose_name='Название')
-    book = models.ForeignKey('Book', on_delete=models.CASCADE, null=True, related_name='chapters', verbose_name='Книга')
-    text = models.TextField(max_length=99999, verbose_name='Содержимое')
-
-    class Meta:
-        verbose_name = 'Глава'
-        verbose_name_plural = 'Главы'
-
-    def __str__(self):
-        return self.name

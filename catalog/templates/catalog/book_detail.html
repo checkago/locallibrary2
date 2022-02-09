@@ -8,7 +8,7 @@
             <h2>Название: <strong>{{ book.title }}</strong></h2>
         </div>
         <div class="card-body">
-            <p><strong>Автор:</strong> <a href="">{{ book.author }}</a></p> <!-- author detail link not yet defined -->
+            <p><strong>Автор:</strong> <a href="{{ book.author.get_absolute_url }}">{{ book.author }}</a></p> <!-- author detail link not yet defined -->
             <p><strong>Описание:</strong> {{ book.summary }}</p>
             <p><strong>Жанр:</strong> {% for genre in book.genre.all %} {{ genre }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
         </div>
@@ -23,29 +23,12 @@
                         </li>
                         {% endfor %}
                     </ul>
-                </div>
+                </div>pip
                 <div class="card-body">
-                      <!-- Nav tabs -->
-                            <!-- Tab panels -->
-                            <div class="tab-content vertical">
-                              <!-- Panel 1 -->
-                                {% for chapter in book.get_chapters %}
-                                  <div class="tab-pane fade" id="panel{{ chapter.id }}" role="tabpanel">
-                                    <h5 class="my-2 h5">{{ chapter.text | safe}}</h5>
-                                  </div>
-                                {%  endfor %}
-                              <!-- Panel 1 -->
-                            </div>
-                        <!-- Nav tabs -->
+                    <embed src="{{ book.file.url }}#toolbar=0&navpanes=1&scrollbar=1" width="1000" height="1100" type="application/pdf" />
                 </div>
                 <div class="card-footer">
-                    <ul class="nav nav-pills pills-primary" role="tablist">
-                        {% for chapter in book.get_chapters %}
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#panel{{ chapter.id }}" role="tab">{{ chapter }}</a>
-                        </li>
-                        {% endfor %}
-                    </ul>
+
                 </div>
         </div>
 
