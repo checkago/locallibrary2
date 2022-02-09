@@ -14,29 +14,17 @@
             {% for Genre in genres %}
           <!--Grid column-->
           <div class="col-lg-4 col-md-12 mb-4">
-
-            <!--Card-->
-            <div class="card">
-
-              <!--Card image-->
-              <!--<div class="view overlay">
-                <div class="embed-responsive embed-responsive-16by9 rounded-top">
-                  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/cXTThxoywNQ" allowfullscreen></iframe>
-                </div>
-              </div> -->
-
-              <!--Card content-->
-              <div class="card-body {{ Genre.color.color }}">
-                <!--Title-->
-                  <a class="text-white" href="{{ Genre.get_absolute_url }}"><h4 class="card-title">{{ Genre.name }}</h4></a>
-                <!--Text-->
-                <p class="card-text text-white">{{ Genre.description }}</p>
-                  <p>Количество книг: {{ Genre.get_books_count }}</p>
-              </div>
-
-            </div>
-            <!--/.Card-->
-
+               <a class="text-white" href="{{ Genre.get_absolute_url }}">
+                    <div class="card">
+                          <div class="card-body {{ Genre.color.color }}">
+                            <!--Title-->
+                              <h4 class="card-title">{{ Genre.name }}</h4>
+                                <!--Text-->
+                              <p class="card-text text-dark">{{ Genre.description }}</p>
+                              <p>Количество книг: {{ Genre.get_books_count }}</p>
+                          </div>
+                    </div>
+                </a>
           </div>
           <!--Grid column-->
             {%  endfor %}
