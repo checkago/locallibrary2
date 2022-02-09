@@ -29,7 +29,7 @@ class Book(models.Model):
     author = models.ForeignKey('Author', on_delete=models.CASCADE, related_name='authorb', null=True, verbose_name='Автор')
     summary = models.TextField(max_length=1000, verbose_name='Описание')
     genre = models.ManyToManyField(Genre, related_name='books', verbose_name='Жанр')
-    file = models.FileField(upload_to='book_files', blank=True, null=True, verbose_name='Файл книги')
+    file = models.FileField(upload_to='book_files', verbose_name='Файл книги')
 
     class Meta:
         verbose_name = 'Книга'
