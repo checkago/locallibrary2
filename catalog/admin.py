@@ -1,7 +1,7 @@
 from django.forms import ModelForm
 from django import forms
 from django.contrib import admin
-from .models import Author, Genre, Book
+from .models import Author, Genre, Book, CardColor
 from ckeditor.widgets import CKEditorWidget
 
 
@@ -19,7 +19,12 @@ class GenreAdmin(admin.ModelAdmin):
     list_display = ('name', 'description',)
 
 
+class CardColorAdmin(admin.ModelAdmin):
+    list_display = ('name', 'color',)
+
+
 admin.site.register(Author, AuthorAdmin)
 admin.site.register(Book, BookAdmin)
 admin.site.register(Genre, GenreAdmin)
+admin.site.register(CardColor, CardColorAdmin)
 

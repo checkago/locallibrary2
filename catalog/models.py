@@ -5,7 +5,7 @@ from django.urls import reverse
 class Genre(models.Model):
     name = models.CharField(max_length=50, verbose_name='Жанр')
     description = models.CharField(max_length=250, verbose_name='Описание жанра')
-    color = models.CharField(max_length=50, verbose_name='Цвет панели на главной')
+    color = models.ForeignKey('CardColor', on_delete=models.SET_NULL, null=True, verbose_name='Цвет карточки')
 
     class Meta:
         verbose_name = 'Жанр'
@@ -69,3 +69,15 @@ class Author(models.Model):
 
     def __str__(self):
         return '%s, %s' % (self.last_name, self.first_name)
+
+
+class CardColor(models.Model):
+    name = models.CharField(max_length=100, verbose_name='Цвет')
+    color = models.CharField(max_length=50, verbose_name='HTML тег цвета')
+
+    class Meta:
+        verbose_name = 'Цвет карточки'
+        verbose_name_plural = 'Цвета карточек жанров'
+
+    def __str__(self):
+        return self.name

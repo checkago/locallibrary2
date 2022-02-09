@@ -12,26 +12,10 @@
             <p><strong>Описание:</strong> {{ book.summary }}</p>
             <p><strong>Жанр:</strong> {% for genre in book.genre.all %} {{ genre }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
         </div>
-    </div>
-        <div class="mt-5 mb-4">
-            <div class="card mb-4 wow fadeIn">
-                <div class="card-header text-center">
-                    <ul class="nav nav-pills pills-primary" role="tablist">
-                        {% for chapter in book.get_chapters %}
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#panel{{ chapter.id }}" role="tab">{{ chapter }}</a>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </div>pip
-                <div class="card-body">
-                    <embed src="{{ book.file.url }}#toolbar=0&navpanes=1&scrollbar=1" width="1000" height="1100" type="application/pdf" />
-                </div>
-                <div class="card-footer">
-
-                </div>
+        <div class="card-footer text-center">
+            <embed src="{{ book.file.url }}#toolbar=0&navpanes=1&scrollbar=1" width="850" height="1100" type="application/pdf" />
         </div>
-
+    </div>
 </div>
 
 {% endblock %}
