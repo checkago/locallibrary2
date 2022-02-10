@@ -27,6 +27,7 @@ class Genre(models.Model):
 class Book(models.Model):
     title = models.CharField(max_length=200, verbose_name='Название')
     author = models.ForeignKey('Author', on_delete=models.CASCADE, related_name='authorb', null=True, verbose_name='Автор')
+    image = models.ImageField(upload_to='book_image', verbose_name='Обложка')
     summary = models.TextField(max_length=1000, verbose_name='Описание')
     genre = models.ManyToManyField(Genre, related_name='books', verbose_name='Жанр')
     file = models.FileField(upload_to='book_files', verbose_name='Файл книги')
@@ -50,6 +51,7 @@ class Book(models.Model):
 class Author(models.Model):
     first_name = models.CharField(max_length=100, verbose_name='Имя')
     last_name = models.CharField(max_length=100, verbose_name='Фамилия')
+    image = models.ImageField(upload_to='authors_photo', blank=True, verbose_name='Фото автора')
     summary = models.TextField(max_length=400, verbose_name='Описание')
     date_of_birth = models.DateField(null=True, blank=True, verbose_name='Дата рождения')
     date_of_death = models.DateField(null=True, blank=True, verbose_name='Дата смерти')

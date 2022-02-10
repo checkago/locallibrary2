@@ -75,5 +75,5 @@ class GenreDetailView(generic.DetailView):
 
         return render(request,
                       'catalog/genre_detail.html',
-                      context={'genre':genre_id, }
+                      context={'genre':genre_id,}
                       )

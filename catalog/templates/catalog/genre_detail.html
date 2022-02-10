@@ -17,9 +17,19 @@
                     <h3>Список книг</h3>
                 </div>
                 <div class="card-body">
-                    {% for Book in genre.get_books %}
-                        <a href="{{ Book.get_absolute_url }}"><h5>{{ Book.title }}</h5></a>
-                    {% endfor %}
+                {% for Book in genre.get_books %}
+                    <div class="row mb-1">
+                        <div class="col-md-2 d-flex align-items-center">
+                            <img  src="{{ Book.image.url }}" width="50" />
+                        </div>
+                        <div class="col-md-7 d-flex align-items-center">
+                            <a href="{{ Book.get_absolute_url }}"><h5>{{ Book.title }}</h5></a>
+                        </div>
+                        <div class="col-md-3 d-flex align-items-center">
+                            <a href="{{ Book.author.get_absolute_url }}"><h5>{{ Book.author }}</h5></a>
+                        </div>
+                    </div>
+                {% endfor %}
                 </div>
                 <div class="card-footer">
                 </div>
