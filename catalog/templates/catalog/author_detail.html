@@ -7,7 +7,17 @@
             <h1>{{ author.first_name }} {{ author.last_name }}</h1>
         </div>
         <div class="card-body">
-            <p><strong>Об авторе:</strong> {{ author.summary }}</p>
+            <div class="row">
+                <div class="col-md-3">
+                    {% if author.image %}
+                    <img src="{{ author.image.url }}" width="250" />
+                    {% else %}
+                    {% endif %}
+                </div>
+                <div class="col-md-9 d-flex align-items-center">
+                    <p><strong>Об авторе:</strong> {{ author.summary }}</p>
+                </div>
+            </div>
         </div>
         <div class="card-footer default-color">
             <p><strong>Годы жизни:</strong> {{ author.date_of_birth }} - {{ author.date_of_death }}</p>
@@ -15,7 +25,7 @@
         </div>
         <div class="card">
             <div class="card-header sunny-morning-gradient">
-            <h3>Список книг автора</h3>
+            <h4>Список книг автора</h4>
         </div>
         <div class="card-body">
             {% for Book in author.get_books %}

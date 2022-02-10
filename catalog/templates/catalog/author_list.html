@@ -12,7 +12,17 @@
 
                   {% for author in author_list %}
                   <li class="list-group-item">
-                    <a href="{{ author.get_absolute_url }}">{{ author.last_name }}, {{ author.first_name }}</a>
+                  <div class="row">
+                      <div class="col-md-2">
+                          {% if author.image %}
+                        <img src="{{ author.image.url }}" width="75" />
+                        {% else %}
+                        {% endif %}
+                      </div>
+                      <div class="col-md-10">
+                          <a href="{{ author.get_absolute_url }}">{{ author.last_name }}, {{ author.first_name }}</a>
+                      </div>
+                  </div>
                   </li>
                   {% endfor %}
 

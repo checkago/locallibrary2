@@ -8,7 +8,7 @@ from ckeditor.widgets import CKEditorWidget
 
 class AuthorAdmin(admin.ModelAdmin):
     list_display = ('last_name', 'first_name', 'date_of_birth', 'date_of_death')
-    fields = [('first_name', 'last_name'), ('date_of_birth', 'date_of_death'), 'summary']
+    fields = [('first_name', 'last_name'), ('date_of_birth', 'date_of_death'), 'image', 'summary']
 
 
 class BookAdmin(admin.ModelAdmin):
