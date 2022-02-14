@@ -31,6 +31,8 @@ class Book(models.Model):
     summary = models.TextField(max_length=1000, verbose_name='Описание')
     genre = models.ManyToManyField(Genre, related_name='books', verbose_name='Жанр')
     file = models.FileField(upload_to='book_files', verbose_name='Файл книги')
+    paper = models.BooleanField(default=True, verbose_name='Печатная версия книги в ЦБС')
+    preview = models.BooleanField(default=False, verbose_name='Ознакомительная версия')
 
     class Meta:
         verbose_name = 'Книга'

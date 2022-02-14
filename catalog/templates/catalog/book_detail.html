@@ -16,7 +16,15 @@
                     <p><strong>Автор:</strong> <a href="{{ book.author.get_absolute_url }}">{{ book.author }}</a></p> <!-- author detail link not yet defined -->
                 <p><strong>Описание:</strong> {{ book.summary }}</p>
                 <p><strong>Жанр:</strong> {% for genre in book.genre.all %} {{ genre }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+                {% if book.paper == True %}
+                    <p><strong>В нашей библиотеке вы можете взять печатную версию данной книги.</strong></p>
                 </div>
+                {% else %}
+                {% endif %}
+                {% if book.preview == True %}
+                <p><strong>Ознакомительный отрывок</strong></p>
+                {% else %}
+                {% endif %}
             </div>
         </div>
         <div class="card-footer text-center">
