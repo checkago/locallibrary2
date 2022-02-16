@@ -57,7 +57,7 @@ class Author(models.Model):
     last_name = models.CharField(max_length=100, verbose_name='Фамилия')
     image = models.ImageField(upload_to='authors_photo', blank=True, verbose_name='Фото автора')
     summary = models.TextField(max_length=400, verbose_name='Описание')
-    date_of_birth = models.DateField(null=True, blank=True, verbose_name='Дата рождения')
+    date_of_birth = models.DateField(null=True, verbose_name='Дата рождения')
     date_of_death = models.DateField(null=True, blank=True, verbose_name='Дата смерти')
 
     class Meta:

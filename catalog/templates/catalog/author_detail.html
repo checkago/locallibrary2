@@ -20,7 +20,8 @@
             </div>
         </div>
         <div class="card-footer default-color">
-            <p><strong>Годы жизни:</strong> {{ author.date_of_birth }} - {{ author.date_of_death }}</p>
+            <p><strong>Дата рождения:</strong>{% if author.date_of_birth == None %}{% else %} {{ author.date_of_birth }}{% endif %}
+                {% if author.date_of_death == None %}{% else %}<strong> Дата смерти:</strong> {{ author.date_of_death }}{% endif %}</p>
             <p>Количество книг: {{ author.get_books_count }}</p>
         </div>
         <div class="card">
