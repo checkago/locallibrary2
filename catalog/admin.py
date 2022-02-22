@@ -14,7 +14,7 @@ class AuthorAdmin(admin.ModelAdmin):
 class BookAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'display_genre', 'summary', 'views')
     list_filter = ['genre']
-
+    exclude = ['views']
 
 class GenreAdmin(admin.ModelAdmin):
     list_display = ('name', 'description',)
