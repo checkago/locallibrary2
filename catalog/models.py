@@ -35,6 +35,7 @@ class Book(models.Model):
     file = models.FileField(upload_to='book_files', verbose_name='Файл книги')
     paper = models.BooleanField(default=True, verbose_name='Печатная версия книги в ЦБС')
     preview = models.BooleanField(default=False, verbose_name='Ознакомительная версия')
+    views = models.IntegerField(default=0, verbose_name='Количество просмотров')
 
     class Meta:
         verbose_name = 'Книга'

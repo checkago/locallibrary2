@@ -12,7 +12,7 @@ class AuthorAdmin(admin.ModelAdmin):
 
 
 class BookAdmin(admin.ModelAdmin):
-    list_display = ('title', 'author', 'display_genre', 'summary')
+    list_display = ('title', 'author', 'display_genre', 'summary', 'views')
     list_filter = ['genre']
 
 

@@ -27,19 +27,15 @@ class BookListView(generic.ListView):
 
 class BookDetailView(generic.DetailView):
     model = Book
+    template_name = 'catalog/book_detail.html'
+    context_object_name = 'book'
 
-    def book_detail_view(request, pk):
-        try:
-            book_id = Book.objects.get(pk=pk)
-
-        except Book.DoesNotExist:
-            raise Http404("Книги в каталоге нет")
-
-        return render(
-            request,
-            'catalog/book_detail.html',
-            context={'book': book_id, 'chapters': chapters}
-        )
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        self.object.views += 1
+        self.object.save()
+        context = self.get_context_data(object=self.object)
+        return self.render_to_response(context)
 
 
 class AuthorListView(generic.ListView):
