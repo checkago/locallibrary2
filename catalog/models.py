@@ -26,7 +26,7 @@ class Genre(models.Model):
 
 class Book(models.Model):
     title = models.CharField(max_length=200, verbose_name='Название')
-    author = models.ForeignKey('Author', on_delete=models.CASCADE, related_name='authorb', null=True, verbose_name='Автор')
+    author = models.ManyToManyField('Author', related_name='authorb', verbose_name='Автор')
     publisher = models.ForeignKey('Publisher', on_delete=models.SET_NULL, null=True, verbose_name='Издатель')
     date = models.CharField(max_length=4, verbose_name='Год издания')
     image = models.ImageField(upload_to='book_image', verbose_name='Обложка')

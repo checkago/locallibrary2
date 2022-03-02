@@ -30,6 +30,10 @@ class BookDetailView(generic.DetailView):
     template_name = 'catalog/book_detail.html'
     context_object_name = 'book'
 
+    def get_context_data(self, **kwargs):
+        kwargs['author'] = self.get_object().author.all()
+        return super(BookDetailView, self).get_context_data(**kwargs)
+
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()
         self.object.views += 1
